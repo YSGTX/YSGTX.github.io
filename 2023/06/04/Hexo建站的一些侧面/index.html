@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="VanGogh">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2023/06/04/hexo建站的一些侧面/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="一.利用Hexo建站 ( 使用GitHub作为Git库 ) ( 必看)关于利用 Hexo  + GitHub 建立一个个人博客网上已经有了很多教程了推荐：Github + Hexo 搭建个人博客超详细教程 PS：绝对不是我懒得抄 二.使用Gitee作为Git库虽然说GitHub是最有名的平台，但是由于是米国的，对于国内的用户并不友好，有时候会被墙掉，能不能访问完全看脸，所以国内的码云（Gitee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo建站的一些侧面">
+<meta property="og:url" content="http://example.com/2023/06/04/Hexo%E5%BB%BA%E7%AB%99%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BE%A7%E9%9D%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一.利用Hexo建站 ( 使用GitHub作为Git库 ) ( 必看)关于利用 Hexo  + GitHub 建立一个个人博客网上已经有了很多教程了推荐：Github + Hexo 搭建个人博客超详细教程 PS：绝对不是我懒得抄 二.使用Gitee作为Git库虽然说GitHub是最有名的平台，但是由于是米国的，对于国内的用户并不友好，有时候会被墙掉，能不能访问完全看脸，所以国内的码云（Gitee">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/04/pC910v8.jpg">
+<meta property="article:published_time" content="2023-06-03T16:19:55.000Z">
+<meta property="article:modified_time" content="2023-06-03T16:22:39.364Z">
+<meta property="article:author" content="VanGogh">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/04/pC910v8.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/head-sculpture.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/head-sculpture.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/head-sculpture.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Hexo建站的一些侧面 -
+        
+        YSGTX
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["时隔七年"]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"梵髙     VanGogh","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":110,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"3rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.2.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","path":"/about"},"Links":{"icon":"fa-regular fa-link","path":"/links"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":{"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head-sculpture.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                YSGTX
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/about"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        关于
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/links"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        链接
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/about"  >
+                             
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                关于
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/links"  >
+                             
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                链接
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">Hexo建站的一些侧面</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head-sculpture.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">VanGogh</span>
+                            
+                                <span class="author-label">时隔七年</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-06-04 00:19:55</span>
+        <span class="mobile">2023-06-04 00:19</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-06-04 00:22:39</span>
+            <span class="mobile">2023-06-04 00:22</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AE%9E%E7%94%A8%E6%80%A7/">实用性</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="一-利用Hexo建站-使用GitHub作为Git库-必看"><a href="#一-利用Hexo建站-使用GitHub作为Git库-必看" class="headerlink" title="一.利用Hexo建站 ( 使用GitHub作为Git库 ) ( 必看)"></a>一.利用Hexo建站 ( 使用GitHub作为Git库 ) ( 必看)</h2><p><strong>关于利用 <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> + GitHub 建立一个个人博客网上已经有了很多教程了<br>推荐：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111614119" >Github + Hexo 搭建个人博客超详细教程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><del>PS：绝对不是我懒得抄</del></strong></p>
+<h2 id="二-使用Gitee作为Git库"><a href="#二-使用Gitee作为Git库" class="headerlink" title="二.使用Gitee作为Git库"></a>二.使用Gitee作为Git库</h2><p><strong>虽然说GitHub是最有名的平台，但是由于是米国的，对于国内的用户并不友好，有时候会被墙掉，能不能访问完全看脸，所以国内的码云（<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/" >Gitee <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）也有一部分优势（两者其实差不多，这么说岂不是压倒性胜利了？）。</strong></p>
+<p><strong>PS：GitHub是上传后自动更新，Gitee要手动刷新一下</strong></p>
+<h2 id="三-补充：同步上传到GitHub和Gitee"><a href="#三-补充：同步上传到GitHub和Gitee" class="headerlink" title="三.补充：同步上传到GitHub和Gitee"></a>三.补充：同步上传到GitHub和Gitee</h2><p><strong>如果你完成了以上步骤，应该不难发现，Hexo的主要配置文件（一般只需要改这个）就是网页源码根目录下的 “_config.yml” 。而Hexo的部署（上传）对象的根据就是 “__config.yml” 中的 “Deployment” 部分。所以想要同时部署两个地址的话，只需要把 “Deployment” 的部分改成：</strong></p>
+<div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> </span><br><span class="line">    <span class="attr">gitee:</span>      <span class="comment"># &lt;你的Gitee库地址&gt;   </span></span><br><span class="line">    <span class="attr">github:</span>      <span class="comment"># &lt;你的GitHub库地址&gt;</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span>   <span class="comment"># master  # &lt;两个库的分支，如果不一样建议创建为相同的&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>下一次部署的时候Hexo会分别向两个库提交新版本。</strong></p>
+<h2 id="四-可能遇到的一些问题及解决方法"><a href="#四-可能遇到的一些问题及解决方法" class="headerlink" title="四.可能遇到的一些问题及解决方法"></a>四.可能遇到的一些问题及解决方法</h2><h3 id="1-Hexo报错-ERROR-Deployer-not-found-git"><a href="#1-Hexo报错-ERROR-Deployer-not-found-git" class="headerlink" title="1.Hexo报错 ERROR Deployer not found: git"></a>1.Hexo报错 ERROR Deployer not found: git</h3><p><strong>这是因为没安装<code>hexo-deployer-git</code>插件，在网页源码根目录下打开命令行输入：</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>之后再输入<code>hexo d</code>部署就行了。</strong></p>
+<h3 id="2-Hexo上传Git库速度陡降"><a href="#2-Hexo上传Git库速度陡降" class="headerlink" title="2.Hexo上传Git库速度陡降"></a>2.Hexo上传Git库速度陡降</h3><p><strong>可能是因为多次生成产生了冗余。</strong></p>
+<p><strong>使用<code>hexo clean</code>清除缓存，如果删除时卡住，请手动执行：找到网页源码根目录下的 “public” 与 “.deploy_git” 文件夹，将其删除后重试。</strong></p>
+<h3 id="3-上传后Git库不更新"><a href="#3-上传后Git库不更新" class="headerlink" title="3.上传后Git库不更新"></a>3.上传后Git库不更新</h3><p><strong>由于Hexo没有检测到更新，并没有进行推送操作，所以需要删除老版本：网页源码根目录下的 “.deploy_git” 文件夹。</strong></p>
+<h3 id="4-Hexo报错Error：spawn-failed"><a href="#4-Hexo报错Error：spawn-failed" class="headerlink" title="4.Hexo报错Error：spawn failed"></a>4.Hexo报错Error：spawn failed</h3><p><strong>可能还会报错:</strong></p>
+<p><strong><code>fatal: cannot lock ref &#39;HEAD&#39;: unable to resolve reference HEAD: Invalid argument</code><br><code>error: src refspec</code><br><code>error: src refspec HEAD does not match any.</code></strong></p>
+<p><strong>原因是本地git推送时对内容的结束符进行了不适当更改，</strong></p>
+<p><strong>使用：</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>关闭此功能。</strong></p>
+<p><strong>再删除已生成文件：根目录下的 “.deploy_git” 文件夹。</strong></p>
+<h3 id="5-npm-在执行install时卡住"><a href="#5-npm-在执行install时卡住" class="headerlink" title="5.npm 在执行install时卡住"></a>5.npm 在执行install时卡住</h3><p><strong>网络问题（毕竟国外的东西）。</strong></p>
+<p><strong>需要更改npm镜像地址（这里使用淘宝的镜像），使用命令行键入：</strong></p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="五-主题"><a href="#五-主题" class="headerlink" title="五.主题"></a>五.主题</h2><p><strong>建站后需要选择一个中意的博客主题，Hexo自带了300+款<a class="link"   target="_blank" rel="noopener" href="https://hexo.io/themes/" >主题 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>（点击图片为示例，点击名称为下载地址），每一个都有示例网页。下载解压好后把文件放在根目录下的 “theme” 文件夹里（以一级文件夹的形式），并把Hexo的 “_config.yml” 中的 theme 项改为放入 “theme” 文件夹的主题文件夹名称：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: 主题名称A   # &lt;你的主题&gt;  </span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2023/06/04/pC910v8.jpg"
+                      alt="Picture"
+                ></p>
+<p><strong>PS：选主题很重要，选好后很多个性化需要更改主题的配置文件，每个主题的文件结构不同，再更改很麻烦。</strong></p>
+<p><strong>一般主题会有自己的教程网站以帮助用户实现不同功能（具体请自行搜索），建议先完整浏览一遍，避免额外安装插件时与主题冲突（这种情况其实挺多的）。</strong></p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/06/12/%E5%86%99%E4%B8%80%E7%82%B9%E5%85%B3%E4%BA%8E%E3%80%8A%E4%BA%91%E7%9A%84%E5%BD%BC%E7%AB%AF%EF%BC%8C%E7%BA%A6%E5%AE%9A%E7%9A%84%E5%9C%B0%E6%96%B9%E3%80%8B%E7%9A%84%E7%9C%8B%E6%B3%95/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">写一点关于《云的彼端，约定的地方》的看法</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/06/02/%E8%BF%91%E6%9C%9F%E8%A7%84%E5%88%92/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">近期规划</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://example.example.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Hexo建站的一些侧面</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E5%88%A9%E7%94%A8Hexo%E5%BB%BA%E7%AB%99-%E4%BD%BF%E7%94%A8GitHub%E4%BD%9C%E4%B8%BAGit%E5%BA%93-%E5%BF%85%E7%9C%8B"><span class="nav-text">一.利用Hexo建站 ( 使用GitHub作为Git库 ) ( 必看)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E4%BD%BF%E7%94%A8Gitee%E4%BD%9C%E4%B8%BAGit%E5%BA%93"><span class="nav-text">二.使用Gitee作为Git库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%A1%A5%E5%85%85%EF%BC%9A%E5%90%8C%E6%AD%A5%E4%B8%8A%E4%BC%A0%E5%88%B0GitHub%E5%92%8CGitee"><span class="nav-text">三.补充：同步上传到GitHub和Gitee</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">四.可能遇到的一些问题及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Hexo%E6%8A%A5%E9%94%99-ERROR-Deployer-not-found-git"><span class="nav-text">1.Hexo报错 ERROR Deployer not found: git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hexo%E4%B8%8A%E4%BC%A0Git%E5%BA%93%E9%80%9F%E5%BA%A6%E9%99%A1%E9%99%8D"><span class="nav-text">2.Hexo上传Git库速度陡降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8A%E4%BC%A0%E5%90%8EGit%E5%BA%93%E4%B8%8D%E6%9B%B4%E6%96%B0"><span class="nav-text">3.上传后Git库不更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Hexo%E6%8A%A5%E9%94%99Error%EF%BC%9Aspawn-failed"><span class="nav-text">4.Hexo报错Error：spawn failed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-npm-%E5%9C%A8%E6%89%A7%E8%A1%8Cinstall%E6%97%B6%E5%8D%A1%E4%BD%8F"><span class="nav-text">5.npm 在执行install时卡住</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E4%B8%BB%E9%A2%98"><span class="nav-text">五.主题</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">VanGogh</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.2.1</a>
+        </div>
+        
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

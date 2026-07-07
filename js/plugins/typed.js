@@ -1,54 +1,138 @@
 /*
-author: @jiangwen5945 & EvanNotFound
+ author: @jiangwen5945 & EvanNotFound
 */
-const usrTypeSpeed = Global.theme_config.home_banner.subtitle.typing_speed;
-const usrBackSpeed = Global.theme_config.home_banner.subtitle.backing_speed;
-const usrBackDelay = Global.theme_config.home_banner.subtitle.backing_delay;
-const usrStartDelay = Global.theme_config.home_banner.subtitle.starting_delay;
-const usrLoop = Global.theme_config.home_banner.subtitle.loop;
-const usrSmartBackspace =
-  Global.theme_config.home_banner.subtitle.smart_backspace;
-const usrHitokotoAPI = Global.theme_config.home_banner.subtitle.hitokoto.api;
 
+const instances = new Map();
+const initTokens = new Map();
 
-if (Global.theme_config.home_banner.subtitle.hitokoto.enable) {
-  Global.initTyped = (id) => {
-    function typing(dataList) {
-      const st = new Typed("#" + id, {
-        strings: [dataList],
-        typeSpeed: usrTypeSpeed || 100, //打字的速度
-        smartBackspace: usrSmartBackspace || false, // 开启智能退格 默认false
-        backSpeed: usrBackSpeed || 80, //后退速度
-        backDelay: usrBackDelay || 1500, //后退延迟
-        loop: usrLoop || false, //是否循环
-        startDelay: usrStartDelay || 500, //起始时间
-        // cursorChar: '♡', // 光标
-      });
+const normalizeSubtitleText = (subtitleText) => {
+  if (Array.isArray(subtitleText)) {
+    return subtitleText.filter((entry) => typeof entry === "string" && entry);
+  }
+
+  if (typeof subtitleText === "string" && subtitleText) {
+    return [subtitleText];
+  }
+
+  return [];
+};
+
+const destroyInstance = (id) => {
+  const instance = instances.get(id);
+  if (instance && typeof instance.destroy === "function") {
+    try {
+      instance.destroy();
+    } catch (error) {
+      console.error("Failed to destroy Typed instance:", error);
+    }
+  }
+
+  instances.delete(id);
+
+  const element = document.getElementById(id);
+  if (element) {
+    element.innerHTML = "";
+  }
+};
+
+const createTyped = (id, strings, options) => {
+  if (typeof window.Typed === "undefined") {
+    return;
+  }
+
+  if (!document.getElementById(id)) {
+    return;
+  }
+
+  destroyInstance(id);
+
+  const instance = new window.Typed(`#${id}`, {
+    strings,
+    typeSpeed: options.typeSpeed,
+    smartBackspace: options.smartBackspace,
+    backSpeed: options.backSpeed,
+    backDelay: options.backDelay,
+    loop: options.loop,
+    startDelay: options.startDelay,
+  });
+
+  instances.set(id, instance);
+};
+
+const subtitleConfig = theme?.home_banner?.subtitle || {};
+const hitokotoConfig = subtitleConfig.hitokoto || {};
+
+export const config = {
+  usrTypeSpeed: subtitleConfig.typing_speed,
+  usrBackSpeed: subtitleConfig.backing_speed,
+  usrBackDelay: subtitleConfig.backing_delay,
+  usrStartDelay: subtitleConfig.starting_delay,
+  usrLoop: subtitleConfig.loop,
+  usrSmartBackspace: subtitleConfig.smart_backspace,
+  usrHitokotoAPI: hitokotoConfig.api,
+};
+
+export default function initTyped(id) {
+  const currentToken = (initTokens.get(id) || 0) + 1;
+  initTokens.set(id, currentToken);
+
+  const {
+    usrTypeSpeed,
+    usrBackSpeed,
+    usrBackDelay,
+    usrStartDelay,
+    usrLoop,
+    usrSmartBackspace,
+    usrHitokotoAPI,
+  } = config;
+
+  const options = {
+    typeSpeed: usrTypeSpeed ?? 100,
+    smartBackspace: usrSmartBackspace ?? false,
+    backSpeed: usrBackSpeed ?? 80,
+    backDelay: usrBackDelay ?? 1500,
+    loop: usrLoop ?? false,
+    startDelay: usrStartDelay ?? 500,
+  };
+
+  const hitokotoEnabled = Boolean(hitokotoConfig.enable);
+
+  if (hitokotoEnabled) {
+    if (!usrHitokotoAPI) {
+      return;
     }
 
     fetch(usrHitokotoAPI)
       .then((response) => response.json())
       .then((data) => {
-        typing(data.hitokoto);
+        if (initTokens.get(id) !== currentToken) {
+          return;
+        }
+
+        const quote = typeof data?.hitokoto === "string" ? data.hitokoto : "";
+        if (!quote) {
+          return;
+        }
+
+        const author =
+          typeof data?.from_who === "string" && hitokotoConfig.show_author
+            ? data.from_who
+            : "";
+        const text = author ? `${quote}——${author}` : quote;
+
+        createTyped(id, [text], options);
       })
-      .catch(console.error);
-  };
-} else {
-  Global.initTyped = (id) => {
-    const sentenceList = [...Global.theme_config.home_banner.subtitle.text];
-
-    if (document.getElementById(id)) {
-      const st = new Typed("#" + id, {
-        strings: sentenceList,
-        typeSpeed: usrTypeSpeed || 100, //打字的速度
-        smartBackspace: usrSmartBackspace || false, // 开启智能退格 默认false
-        backSpeed: usrBackSpeed || 80, //后退速度
-        backDelay: usrBackDelay || 1500, //后退延迟
-        loop: usrLoop || false, //是否循环
-        startDelay: usrStartDelay || 500, //起始时间
-        // cursorChar: '♡', // 光标
+      .catch((error) => {
+        console.error("Failed to fetch hitokoto:", error);
       });
-    }
-  };
-}
 
+    return;
+  }
+
+  const subtitleEntries = normalizeSubtitleText(subtitleConfig.text);
+  if (subtitleEntries.length === 0) {
+    return;
+  }
+
+  createTyped(id, subtitleEntries, options);
+}

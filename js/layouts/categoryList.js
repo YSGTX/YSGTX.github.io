@@ -1,69 +1,77 @@
-function categoryListInit() {
-  var allParentElements = document.querySelectorAll(".all-category-list-item");
+let didInit = false;
 
-  let parentElements = Array.from(allParentElements).filter((item) => {
-    return item.parentElement.classList.contains("all-category-list");
-  });
+const toggleStyle = (element, style, firstValue, secondValue) => {
+  element.style[style] =
+    element.style[style] === firstValue ? secondValue : firstValue;
+};
 
-  // Loop through each parent element
-  // Set initial maxHeight and marginTop values for child elements
-  parentElements.forEach(function (parentElement) {
-    var childElements = parentElement.querySelectorAll(
-      ".all-category-list-child"
+const getParentElements = () =>
+  Array.from(document.querySelectorAll(".all-category-list-item")).filter(
+    (item) => item.parentElement?.classList.contains("all-category-list"),
+  );
+
+const resetChildStyles = () => {
+  const parentElements = getParentElements();
+  parentElements.forEach((parentElement) => {
+    const childElements = parentElement.querySelectorAll(
+      ".all-category-list-child",
     );
-    childElements.forEach(function (childElement) {
+    childElements.forEach((childElement) => {
       childElement.style.maxHeight = "0px";
       childElement.style.marginTop = "0px";
     });
   });
+};
 
-  // Loop through each parent element
-  parentElements.forEach(function (parentElement, index) {
-    // Add click event listener to the parent element
-    parentElement.addEventListener("click", function () {
-      // Toggle the display of child elements
-      var childElements = parentElement.querySelectorAll(
-        ".all-category-list-child"
-      );
-      childElements.forEach(function (childElement) {
-        childElement.style.maxHeight =
-          childElement.style.maxHeight === "0px" ? "1000px" : "0px";
-        childElement.style.marginTop =
-          childElement.style.marginTop === "0px" ? "15px" : "0px";
-      });
+const handleCategoryClick = (event) => {
+  const parentElement = event.target.closest(".all-category-list-item");
+  if (!parentElement) {
+    return;
+  }
 
-      // If there is a next sibling in the parentElements array, toggle its display as well
-      if (index % 2 === 0 && parentElements[index + 1]) {
-        var siblingChildElements = parentElements[index + 1].querySelectorAll(
-          ".all-category-list-child"
-        );
-        siblingChildElements.forEach(function (siblingChildElement) {
-          siblingChildElement.style.maxHeight =
-            siblingChildElement.style.maxHeight === "0px" ? "1000px" : "0px";
-          siblingChildElement.style.marginTop =
-            siblingChildElement.style.marginTop === "0px" ? "15px" : "0px";
-        });
-      }
+  if (!parentElement.parentElement?.classList.contains("all-category-list")) {
+    return;
+  }
 
-      // If there is a previous sibling in the parentElements array, toggle its display as well
-      if (index % 2 === 1 && parentElements[index - 1]) {
-        var siblingChildElements = parentElements[index - 1].querySelectorAll(
-          ".all-category-list-child"
-        );
-        siblingChildElements.forEach(function (siblingChildElement) {
-          siblingChildElement.style.maxHeight =
-            siblingChildElement.style.maxHeight === "0px" ? "1000px" : "0px";
-          siblingChildElement.style.marginTop =
-            siblingChildElement.style.marginTop === "0px" ? "15px" : "0px";
-        });
-      }
-    });
+  const childElements = parentElement.querySelectorAll(
+    ".all-category-list-child",
+  );
+
+  childElements.forEach((childElement) => {
+    toggleStyle(childElement, "maxHeight", "0px", "1000px");
+    toggleStyle(childElement, "marginTop", "0px", "15px");
   });
-}
 
+  const parentElements = getParentElements();
+  const clickedElementTopOffset = parentElement.offsetTop;
 
-if (Global.theme_config.global.pjax === true && Global.utils) {
-    categoryListInit();
-} else {
-    window.addEventListener('DOMContentLoaded', categoryListInit);
+  parentElements.forEach((siblingElement) => {
+    if (
+      siblingElement.offsetTop === clickedElementTopOffset &&
+      siblingElement !== parentElement
+    ) {
+      const siblingChildElements = siblingElement.querySelectorAll(
+        ".all-category-list-child",
+      );
+      siblingChildElements.forEach((siblingChildElement) => {
+        toggleStyle(siblingChildElement, "maxHeight", "0px", "1000px");
+        toggleStyle(siblingChildElement, "marginTop", "0px", "15px");
+      });
+    }
+  });
+};
+
+export default function initCategoryList({ signal } = {}) {
+  resetChildStyles();
+
+  if (didInit) {
+    return;
+  }
+
+  didInit = true;
+  if (signal) {
+    document.addEventListener("click", handleCategoryClick, { signal });
+  } else {
+    document.addEventListener("click", handleCategoryClick);
+  }
 }

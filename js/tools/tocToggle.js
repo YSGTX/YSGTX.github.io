@@ -1,42 +1,79 @@
-/* global function */
+import { updateStyleStatus } from "../state/styleStatus.js";
 
-function initTocToggle() {
-  Global.utils.TocToggle = {
+let didInit = false;
 
-    toggleBar: document.querySelector('.page-aside-toggle'),
-    postPageContainerDom: document.querySelector('.post-page-container'),
-    toggleBarIcon: document.querySelector('.page-aside-toggle i'),
-    articleContentContainerDom: document.querySelector('.article-content-container'),
-    mainContentDom: document.querySelector('.main-content'),
+const getTocElements = () => ({
+  toggleBar: document.querySelector(".page-aside-toggle"),
+  postPageContainerDom: document.querySelector(".post-page-container"),
+  toggleBarIcon: document.querySelector(".page-aside-toggle i"),
+  mainContentDom: document.querySelector(".main-content"),
+});
 
-    isOpenPageAside: false,
-
-    initToggleBarButton() {
-      this.toggleBar && this.toggleBar.addEventListener('click', () => {
-        this.isOpenPageAside = !this.isOpenPageAside;
-        Global.styleStatus.isOpenPageAside = this.isOpenPageAside;
-        Global.setStyleStatus();
-        this.changePageLayoutWhenOpenToggle(this.isOpenPageAside);
-      });
-    },
-
-    changePageLayoutWhenOpenToggle(isOpen) {
-      this.toggleBarIcon && (this.toggleBarIcon.className = isOpen ? 'fas fa-indent' : 'fas fa-outdent');
-      this.postPageContainerDom.className = isOpen ? 'post-page-container show-toc' : 'post-page-container';
-      this.mainContentDom.className = isOpen ? 'main-content has-toc' : 'main-content';
-    },
-
-    pageAsideHandleOfTOC(isOpen) {
-      this.toggleBar.style.display = 'flex';
-      this.isOpenPageAside = isOpen;
-      this.changePageLayoutWhenOpenToggle(isOpen);
-    }
+const toggleClassName = (element, className, condition) => {
+  if (element) {
+    element.classList.toggle(className, condition);
   }
-  Global.utils.TocToggle.initToggleBarButton();
-}
+};
 
-if (Global.theme_config.global.pjax === true && Global.utils) {
-  initTocToggle();
-} else {
-  window.addEventListener('DOMContentLoaded', initTocToggle);
+const applyTocState = (elements, isOpen) => {
+  toggleClassName(elements.toggleBarIcon, "fas", isOpen);
+  toggleClassName(elements.toggleBarIcon, "fa-indent", isOpen);
+  toggleClassName(elements.toggleBarIcon, "fa-outdent", !isOpen);
+  toggleClassName(elements.postPageContainerDom, "show-toc", isOpen);
+  toggleClassName(elements.mainContentDom, "has-toc", isOpen);
+};
+
+const showToggle = (elements) => {
+  if (elements.toggleBar) {
+    elements.toggleBar.style.display = "flex";
+  }
+};
+
+const hideToggle = (elements) => {
+  if (elements.toggleBar) {
+    elements.toggleBar.style.display = "none";
+  }
+};
+
+const handleToggleClick = (event) => {
+  const toggle = event.target.closest(".page-aside-toggle");
+  if (!toggle) {
+    return;
+  }
+
+  const elements = getTocElements();
+  if (!elements.postPageContainerDom || !elements.mainContentDom) {
+    return;
+  }
+
+  const isOpen = !elements.postPageContainerDom.classList.contains("show-toc");
+  updateStyleStatus({
+    isOpenPageAside: isOpen,
+  });
+  showToggle(elements);
+  applyTocState(elements, isOpen);
+};
+
+export function initTocToggle({ signal } = {}) {
+  if (!didInit && signal) {
+    didInit = true;
+    document.addEventListener("click", handleToggleClick, { signal });
+  }
+
+  const elements = getTocElements();
+
+  return {
+    pageAsideHandleOfTOC(isOpen) {
+      if (!elements.postPageContainerDom || !elements.mainContentDom) {
+        hideToggle(elements);
+        return;
+      }
+
+      showToggle(elements);
+      applyTocState(elements, isOpen);
+    },
+    hideToggle() {
+      hideToggle(elements);
+    },
+  };
 }

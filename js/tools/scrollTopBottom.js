@@ -1,27 +1,44 @@
-Global.initBackToTop = () => {
-  const backToTopButton_dom = document.querySelector('.tool-scroll-to-top');
-  const backToBottomButton_dom = document.querySelector('.tool-scroll-to-bottom');
+let didInit = false;
 
-  const backtotop = () => {
-    document.body.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-
-  const backToBottom = () => {
-    document.querySelector("footer.footer").scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-
-  const initBackToTop = () => {
-    backToTopButton_dom.addEventListener('click', backtotop);
-  };
-
-  const initBackToBottom = () => {
-    backToBottomButton_dom.addEventListener('click', backToBottom);
-  };
-
-  initBackToTop();
-  initBackToBottom();
+const backToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };
+
+const backToBottom = () => {
+  const docHeight = document.body.scrollHeight;
+  window.scrollTo({
+    top: docHeight,
+    behavior: "smooth",
+  });
+};
+
+const handleClick = (event) => {
+  const topButton = event.target.closest(".tool-scroll-to-top");
+  if (topButton) {
+    backToTop();
+    return;
+  }
+
+  const bottomButton = event.target.closest(".tool-scroll-to-bottom");
+  if (bottomButton) {
+    backToBottom();
+  }
+};
+
+const initScrollTopBottom = ({ signal } = {}) => {
+  if (didInit) {
+    return;
+  }
+
+  didInit = true;
+  if (signal) {
+    document.addEventListener("click", handleClick, { signal });
+  } else {
+    document.addEventListener("click", handleClick);
+  }
+};
+
+export default initScrollTopBottom;
